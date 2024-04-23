@@ -85,16 +85,7 @@ public class StudentControl {
 	    public ResponseEntity<List<Students>> getFilteredProducts(
 	            @RequestParam(required = false) String name,
 	            @RequestParam(required = false) String mail) {
-	        List<Students> Std;
-	        if (name != null && mail != null) {
-	            Std = Stdserv.getStudentsByNameAndMail(name, mail);
-	        } else if (name != null) {
-	            Std = Stdserv.getStudentsByName(name);
-	        } else if (mail != null) {
-	            Std = Stdserv.getStudentsByMail(mail);
-	        } else {
-	            Std = Stdserv.getAllStd();
-	        }
-	        return ResponseEntity.ok().body(Std);
+	        List<Students> Std=Stdserv.getStdByFilter(name,mail);
+	        return ResponseEntity.ok(Std);
 }
 }
